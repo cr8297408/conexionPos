@@ -10,8 +10,84 @@
     }
   ],
   "paths": {
-    "/api/licenses": {
-      
+    "/v1/licenses": {
+      "get": {
+        "description": "get all licenses of the BD",
+        "tags": [
+          "license"
+        ],
+        "responses": {
+          "200": {
+            "description": "get all licenses successfully"
+          },
+          "401": {
+            "description": "don´t have permissions for this action"
+          }
+        }
+
+      }
     }
-  }
+  },
+  "components": {
+    "schemas": {
+      "LicenceSchema": {
+        "required": [
+          "client",
+          "serial",
+          "expired_date"
+        ],
+        "properties": {
+          "id":{
+            "type": "string"
+          },
+          "client": {
+            "type": "string"
+          },
+          "serial": {
+            "type":"string"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "expired_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "nodes":{
+            "type": "number"
+          },
+          "isActive": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Licenses": {
+        "type": "array",
+        "items": {
+          "$ref": "#components/schemas/LicensesSchema"
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "status",
+          "message"
+        ],
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "HTTP status code",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "description": "Error description",
+            "example": "entity no created"
+          }
+        }
+      }
+    }
+  },
+  "tags": []
 }
