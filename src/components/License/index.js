@@ -3,8 +3,18 @@ const LicenseService = require('./service');
 
 async function findAll(req, res, next) {
   try {
-    const users = await LicenseService.findAll()
-    res.status(200).json(users)
+    const licenses = await LicenseService.findAll()
+    res.status(200).json(licenses)
+  } catch (error) {
+    res.json(error.message)
+  }
+}
+
+async function create(req, res, next){
+  try {
+    const license = await LicenseService.create(req.body);
+    res.status(201).json(license)
+  
   } catch (error) {
     res.json(error.message)
   }
@@ -13,4 +23,5 @@ async function findAll(req, res, next) {
 
 module.exports = {
   findAll,
+  create
 }

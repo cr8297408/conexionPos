@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { LicenseComponent } = require('../components');
 
 const License = require('../components/License');
+const LicenseService = require('../components/License/service');
 
 const router = Router();
 
@@ -34,5 +35,8 @@ const router = Router();
  */
 
 router.get('/', LicenseComponent.findAll)
+
+
+router.post('/', LicenseComponent.create)
 
 module.exports = router;

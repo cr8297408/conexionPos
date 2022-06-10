@@ -14,17 +14,17 @@ class LicenseValidation {
      * @returns {Joi.validationResult}
      */
 
-    createLicense(params){
-      const schema = joi.object().keys({
+    createLicense(body){
+      const schema = Joi.object().keys({
         client: Joi.string().required(),
         serial: Joi.string().required(),
-        start_date: Joi.date().required(),
+        start_date: Joi.date(),
         expired_date: Joi.date().required(),
         nodes: Joi.number(),
         isActive: Joi.boolean()
       })
 
-      return schema.validate(params)
+      return schema.validate(body)
     }
 
     /**
@@ -39,7 +39,5 @@ class LicenseValidation {
 
       return schema.validate(id);
   }
-
-
-
 }
+module.exports = new LicenseValidation();

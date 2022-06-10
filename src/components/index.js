@@ -1,3 +1,4 @@
 const LicenseComponent = require('./License')
+const SectionComponent = require('./section')
 
-module.exports = {LicenseComponent}
+module.exports = {LicenseComponent, SectionComponent}

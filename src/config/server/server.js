@@ -8,6 +8,8 @@ const Routes = require('../../routes')
 
 const app = express();
 
+app.use(express.json());
+
 if (swaggerDoc) {
   app.use('/api-docs', swaggerUi.serve)
   app.use('/api-docs', swaggerUi.setup(swaggerDoc))
